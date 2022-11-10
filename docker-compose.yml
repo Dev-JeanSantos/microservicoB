@@ -1,18 +1,13 @@
+version: '3'
 services:
   localstack:
-    image: localstack/localstack:latest
-    ports:
-      - "4567-4587:4567-4587"
-      - "8057:8090"
+    image: localstack/localstack
     environment:
-      - EXTRA_CORS_ALLOWED_ORIGINS=app://.
-      - HOSTNAME_EXTERNAL=localstack
-      - SERVICES=s3
+      - SERVICES=s3,sqs
       - DOCKER_HOST=unix:///var/run/docker.sock
-      - AWS_DEFAULT_REGION=us-east-1
-      - DEBUG=1
-      - no_proxy=localhost,0.0.0.0
       - AWS_ACCESS_KEY_ID=jean
       - AWS_SECRET_ACCESS_KEY=jean
+    ports:
+      - "4566-4572:4566-4572"  # s3
     volumes:
       - "./ci/localstack:/docker-entrypoint-initaws.d"
