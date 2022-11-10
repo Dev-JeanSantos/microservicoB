@@ -8,4 +8,5 @@ class MicroservicoBApplication
 
 fun main(args: Array<String>) {
 	runApplication<MicroservicoBApplication>(*args)
+
 }
