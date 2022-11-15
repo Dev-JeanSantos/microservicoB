@@ -1,4 +1,4 @@
-package com.example.microservicoB.adapter.input.sqs_listener
+package com.example.microservicoB.adapter.input.feign
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.math.BigDecimal
@@ -12,4 +12,8 @@ data class TransferenciaSqs (
         var contaCredito: String,
         @JsonProperty("transferenciaId")
         var transferenciaId: String,
-)
+){
+        init {
+            this.transferenciaId = this.transferenciaId.split("_").last()
+        }
+}
